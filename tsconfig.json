@@ -1,0 +1,24 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "allowJs": true,
+    "jsx": "react",
+    "outDir": "./build",
+    "isolatedModules": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "typeRoots": ["node_modules/@types"],
+    "esModuleInterop": true,
+    "paths": {
+      "assets/*": ["./src/assets/*"],
+      "images/*": ["./src/assets/images/*"],
+      "components/*": ["./src/components/*"],
+      "containers/*": ["./src/containers/*"]
+    }
+  },
+  "include": ["src/**/*", "src/type.d.ts"],
+  "exclude": ["node_modules"]
+}
