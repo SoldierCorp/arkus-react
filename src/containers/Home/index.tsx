@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 const HomeComponent = () => {
   return (
     <div>
-      <h3>Home2</h3>
+      <h3>Home</h3>
     </div>
   );
 }

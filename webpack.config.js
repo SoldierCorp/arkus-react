@@ -17,6 +17,11 @@ module.exports = {
       containers: path.resolve(__dirname, 'src/containers/'),
     },
   },
+  devServer: {
+    contentBase: './build',
+    port: 3000,
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       {

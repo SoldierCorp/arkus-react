@@ -11,10 +11,10 @@ import { Dispatch } from 'redux';
 import { useDispatch } from 'react-redux';
 
 
-const ContactListComponent = () => {
+const ContactComponent = () => {
   return (
     <div>
-      <h3>Contact List</h3>
+      <h3>Contact</h3>
     </div>
   );
 }
@@ -26,4 +26,4 @@ const mapStateToProps = ({ home }: AppState) => ({
 const mapDispatchProps = () => {};
 
 
-export default connect(mapStateToProps, mapDispatchProps)(ContactListComponent)
+export default connect(mapStateToProps, mapDispatchProps)(ContactComponent)
