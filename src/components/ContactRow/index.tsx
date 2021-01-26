@@ -1,6 +1,5 @@
 // Core
 import React from 'react'
-import { Link } from 'react-router-dom';
 
 // Styles
 import './style.scss'
@@ -13,19 +12,8 @@ const ContactRow: React.FC<any> = (props) => {
       <span className="contact-email">{props.email}</span>
       <button className="btn contact-view" onClick={props.doOpenModal}>Edit</button>
       <button className="btn contact-update" onClick={props.doOpenDetails}>View</button>
-
-     {/*  {
-        !props.contactDetails &&
-          <Link
-          to={{
-            pathname: `/contact/${props.id}`
-          }}
-          className="btn contact-update">
-          View
-        </Link>
-      } */}
     </div>
-  );
+  )
 }
 
 export default ContactRow

@@ -19,12 +19,14 @@ import { addContact, getContacts, contactToEdit } from '../ContactList/actions'
 
 const ContactComponent = () => {
 
+  // Variables
   const dispatch = useDispatch();
-  const history = useHistory();
 
+  // State
   const [modalOpen, setModalStatus] = useState(false)
   const [modalOpenType, setModalOpenType] = useState('Add')
 
+  // Functions for modal
   const modalProps = useSpring({
     opacity: modalOpen ? 1 : 0,
   })
@@ -36,7 +38,7 @@ const ContactComponent = () => {
 
   const openModal = (c: any) => {
     if (c.id !== undefined) {
-      dispatch(contactToEdit(c));
+      dispatch(contactToEdit(c))
       setModalOpenType('Update')
     } else {
       dispatch(contactToEdit({
@@ -45,7 +47,7 @@ const ContactComponent = () => {
         last_name: '',
         email: '',
         avatar: '',
-      }));
+      }))
       setModalOpenType('Add')
     }
 
@@ -59,11 +61,8 @@ const ContactComponent = () => {
   }
 
   // Get state from redux
-  const contactData: any = useSelector((state: AppState) => state.contactList.contactData);
-  const loading = useSelector((state: AppState) => state.contactList.loading);
-  const contacts = useSelector((state: AppState) => state.contactList.contacts);
-  const isProcessing: any = useSelector((state: AppState) => state.contactList.processing);
-
+  const contactData: any = useSelector((state: AppState) => state.contactList.contactData)
+  const isProcessing: any = useSelector((state: AppState) => state.contactList.processing)
 
   return (
     <article className="contact">

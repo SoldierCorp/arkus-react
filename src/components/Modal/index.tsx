@@ -13,19 +13,25 @@ import './style.scss'
 
 const Modal: React.FC<any> = (props) => {
 
+  // Variables
   const dispatch = useDispatch();
   const fileRef: any = React.useRef();
+
+  // State
   const [contactAvatar, setContactAvatar] = useState('');
 
+  // Update form fields state
   const updateForm = (e: any) => {
     const {name, value} = e.target
-    dispatch(updateContactData(name, value));
+    dispatch(updateContactData(name, value))
   }
 
+  // Handle file input
   const handleFileInput = (e: any) => {
     setContactAvatar(e.target.files[0])
   }
-
+  
+  // Submit new contact
   const onNewContact = (e: any) => {
     e.preventDefault();
 
@@ -34,6 +40,7 @@ const Modal: React.FC<any> = (props) => {
     dispatch(addContact(contactDataToEdit, contactAvatar));
   }
 
+  // Submit update contact
   const onUpdateContact = (e: any) => {
     e.preventDefault();
 
@@ -43,10 +50,10 @@ const Modal: React.FC<any> = (props) => {
   }
 
   // State from redux
-  const isProcessing: any = useSelector((state: AppState) => state.contactList.processing);
-  const contactDataToEdit: any = useSelector((state: AppState) => state.contactList.contactData);
-  const formMessage: any = useSelector((state: AppState) => state.contactList.formMessage);
-  const addSuccess = useSelector((state: AppState) => state.contactList.addSuccess);
+  const isProcessing: any = useSelector((state: AppState) => state.contactList.processing)
+  const contactDataToEdit: any = useSelector((state: AppState) => state.contactList.contactData)
+  const formMessage: any = useSelector((state: AppState) => state.contactList.formMessage)
+  const addSuccess = useSelector((state: AppState) => state.contactList.addSuccess)
 
   if (addSuccess) {
     fileRef.current.value = ''

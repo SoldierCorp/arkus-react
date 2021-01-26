@@ -5,24 +5,27 @@ import React, { useEffect, useState } from 'react'
 import ContactRow from '../../components/ContactRow'
 import Modal from '../../components/Modal'
 import { useSpring } from 'react-spring'
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"
 
 // Styles
 import './style.scss'
 
 // Redux
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'
 import { AppState } from '../../store'
-import { addContact, getContacts, contactToEdit } from './actions'
+import { getContacts, contactToEdit } from './actions'
 
 const ContactListComponent = () => {
 
-  const dispatch = useDispatch();
-  const history = useHistory();
+  // Variables
+  const dispatch = useDispatch()
+  const history = useHistory()
 
+  // States
   const [modalOpen, setModalStatus] = useState(false)
   const [modalOpenType, setModalOpenType] = useState('Add')
 
+  // Functions for modal
   const modalProps = useSpring({
     opacity: modalOpen ? 1 : 0,
   })
@@ -34,7 +37,7 @@ const ContactListComponent = () => {
 
   const openModal = (c: any) => {
     if (c.id !== undefined) {
-      dispatch(contactToEdit(c));
+      dispatch(contactToEdit(c))
       setModalOpenType('Update')
     } else {
       dispatch(contactToEdit({
@@ -43,7 +46,7 @@ const ContactListComponent = () => {
         last_name: '',
         email: '',
         avatar: '',
-      }));
+      }))
       setModalOpenType('Add')
     }
 
@@ -57,19 +60,19 @@ const ContactListComponent = () => {
   }
 
   const openDetais = (c: any) => {
-    dispatch(contactToEdit(c));
-    history.push('contact/' + c.id);
+    dispatch(contactToEdit(c))
+    history.push('contact/' + c.id)
   }
 
   // Get contacts
   useEffect(() => {
     dispatch(getContacts());
-  }, [dispatch]);
+  }, [dispatch])
 
   // Get state from redux
-  const loading = useSelector((state: AppState) => state.contactList.loading);
-  const contacts = useSelector((state: AppState) => state.contactList.contacts);
-  const isProcessing: any = useSelector((state: AppState) => state.contactList.processing);
+  const loading = useSelector((state: AppState) => state.contactList.loading)
+  const contacts = useSelector((state: AppState) => state.contactList.contacts)
+  const isProcessing: any = useSelector((state: AppState) => state.contactList.processing)
 
 
   // Render contacts

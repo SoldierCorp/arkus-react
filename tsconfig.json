@@ -16,7 +16,7 @@
       "assets/*": ["./src/assets/*"],
       "images/*": ["./src/assets/images/*"],
       "components/*": ["./src/components/*"],
-      "containers/*": ["./src/containers/*"]
+      "containers": ["./src/containers"]
     }
   },
   "include": ["src/**/*", "src/type.d.ts"],

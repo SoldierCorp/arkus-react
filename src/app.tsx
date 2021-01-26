@@ -11,13 +11,6 @@ import Router from './router'
 // Redux
 import { Provider } from 'react-redux'
 import store from './store'
-import { AppState } from './store'
-import { Store } from 'redux';
-
-interface MainProps {
-  store: Store<AppState>;
-  // history: History;
-}
 
 ReactDOM.render(
   <React.StrictMode>

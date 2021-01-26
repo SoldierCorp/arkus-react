@@ -1,8 +1,5 @@
-// src/store/chat/actions.ts
-
 import {
   ContactListActionTypes,
-  ContactStateType,
   GET_CONTACTS_FAIL,
   GET_CONTACTS_SUCCESS,
   ADD_CONTACT_SUCCESS,
@@ -14,8 +11,8 @@ import {
   PROCESSING,
   CLEAR_FORM_MESSAGE
 } from './types'
-import { ActionCreator, Action, Dispatch } from 'redux';
-import { ThunkAction } from 'redux-thunk';
+import { Action, Dispatch } from 'redux'
+import { ThunkAction } from 'redux-thunk'
 import { AppState } from '../../store'
 import axios from 'axios'
 
@@ -33,64 +30,65 @@ export const processingAction = (type: boolean): ContactListActionTypes => {
   return {
     type: PROCESSING,
     payload: type
-  };
-};
+  }
+}
 
 export const clearFormMessageAction = (type: boolean): ContactListActionTypes => {
   return {
     type: CLEAR_FORM_MESSAGE,
     payload: type
-  };
-};
+  }
+}
 
 export const getContactsAction = (contacts: Contact[]): ContactListActionTypes => {
   return {
     type: GET_CONTACTS_SUCCESS,
     payload: contacts
-  };
-};
+  }
+}
 
 export const addContactAction = (contact: Contact[]): ContactListActionTypes => {
   return {
     type: ADD_CONTACT_SUCCESS,
     payload: contact
-  };
-};
+  }
+}
 
 export const addContactFailAction = (contact: Contact[]): ContactListActionTypes => {
   return {
     type: ADD_CONTACT_FAIL,
     payload: contact
-  };
-};
+  }
+}
 
 export const updateContactAction = (contact: Contact[]): ContactListActionTypes => {
   return {
     type: UPDATE_CONTACT_SUCCESS,
     payload: contact
-  };
-};
+  }
+}
+
 export const updateContactFailAction = (contact: Contact[]): ContactListActionTypes => {
   return {
     type: UPDATE_CONTACT_FAIL,
     payload: contact
-  };
-};
+  }
+}
 
 export const contactToEditAction = (contact: Contact[]): ContactListActionTypes => {
   return {
     type: CONTACT_TO_EDIT,
     payload: contact
-  };
-};
+  }
+}
 
 export const updateContactDataAction = (fieldName: string, contact: Contact[]): ContactListActionTypes => {
   return {
     type: UPDATE_CONTACT_DATA,
     field: fieldName,
     payload: contact
-  };
-};
+  }
+}
 
 /*
  Actions
@@ -128,13 +126,13 @@ export const getContacts = () => {
 export const addContact = (data: any, avatar: any) => {
   return (dispatch: Dispatch<ContactListActionTypes>) => {
 
-    const POST_CONTACTS_URL = 'https://reqres.in/api/users';
+    const POST_CONTACTS_URL = 'https://reqres.in/api/users'
 
     const formData = new FormData();
-    formData.append('first_name', data.first_name);
-    formData.append('last_name', data.last_name);
-    formData.append('email', data.email);
-    formData.append('avatar', avatar);
+    formData.append('first_name', data.first_name)
+    formData.append('last_name', data.last_name)
+    formData.append('email', data.email)
+    formData.append('avatar', avatar)
 
     axios({
       method: 'POST',
@@ -163,13 +161,13 @@ export const addContact = (data: any, avatar: any) => {
 export const updateContact = (data: any, avatar: any) => {
   return (dispatch: Dispatch<ContactListActionTypes>) => {
 
-    const PUT_CONTACTS_URL = 'https://reqres.in/api/users/' + data.id;
+    const PUT_CONTACTS_URL = 'https://reqres.in/api/users/' + data.id
 
-    const formData = new FormData();
-    formData.append('first_name', data.first_name);
-    formData.append('last_name', data.last_name);
-    formData.append('email', data.email);
-    formData.append('avatar', avatar);
+    const formData = new FormData()
+    formData.append('first_name', data.first_name)
+    formData.append('last_name', data.last_name)
+    formData.append('email', data.email)
+    formData.append('avatar', avatar)
 
     axios({
       method: 'PUT',

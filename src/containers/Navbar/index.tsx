@@ -1,8 +1,6 @@
 // Core
 import React from 'react'
-import {
-  NavLink
-} from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
 // Styles
 import './style.scss'
