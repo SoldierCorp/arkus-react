@@ -6,13 +6,20 @@
 }; */
 
 export const LOADING_CONTACTS = 'LOADING_CONTACTS';
+
 export const GET_CONTACTS = 'GET_CONTACTS';
 export const GET_CONTACTS_SUCCESS = 'GET_CONTACTS_SUCCESS';
 export const GET_CONTACTS_FAIL = 'GET_CONTACTS_FAIL';
+
+export const GET_SINGLE_CONTACT_SUCCESS = 'GET_SINGLE_CONTACT_SUCCESS';
+export const GET_SINGLE_CONTACT_FAIL = 'GET_SINGLE_CONTACT_FAIL';
+
 export const ADD_CONTACT_SUCCESS = 'ADD_CONTACT_SUCCESS';
 export const ADD_CONTACT_FAIL = 'ADD_CONTACT_FAIL';
+
 export const UPDATE_CONTACT_SUCCESS = 'UPDATE_CONTACT_SUCCESS';
 export const UPDATE_CONTACT_FAIL = 'UPDATE_CONTACT_FAIL';
+
 export const CONTACT_TO_EDIT = 'CONTACT_TO_EDIT';
 export const UPDATE_CONTACT_DATA = 'UPDATE_CONTACT_DATA';
 
@@ -40,6 +47,15 @@ interface ClearFormMessageAction {
 }
 interface SuccessGetContactsAction {
   type: typeof GET_CONTACTS_SUCCESS
+  payload: Contact[]
+}
+interface SuccessGetSingleContactAction {
+  type: typeof GET_SINGLE_CONTACT_SUCCESS
+  payload: Contact[]
+}
+
+interface FailGetSingleContactAction {
+  type: typeof GET_SINGLE_CONTACT_FAIL
   payload: Contact[]
 }
 interface SuccessAddContactsAction {
@@ -75,6 +91,8 @@ interface UpdateContactDataAction {
 export type ContactListActionTypes =
   ProcessingAction |
   ClearFormMessageAction |
+  SuccessGetSingleContactAction |
+  FailGetSingleContactAction |
   SuccessGetContactsAction |
   SuccessAddContactsAction |
   FailAddContactAction |

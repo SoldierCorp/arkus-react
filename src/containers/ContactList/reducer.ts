@@ -10,7 +10,9 @@ import {
   UPDATE_CONTACT_SUCCESS,
   UPDATE_CONTACT_FAIL,
   PROCESSING,
-  CLEAR_FORM_MESSAGE
+  CLEAR_FORM_MESSAGE,
+  GET_SINGLE_CONTACT_SUCCESS,
+  GET_SINGLE_CONTACT_FAIL
 } from './types'
 
 const initialState: ContactStateType = {
@@ -44,6 +46,22 @@ export const contactListReducer = (
       return {
         ...state,
         formMessage: '',
+      }
+    }
+    case GET_SINGLE_CONTACT_SUCCESS: {
+
+      console.log(action.payload)
+      return {
+        ...state,
+        loading: false,
+        contactData: action.payload
+      }
+    }
+    case GET_SINGLE_CONTACT_FAIL: {
+      return {
+        ...state,
+        loading: false,
+        contactData: action.payload
       }
     }
     case GET_CONTACTS_SUCCESS: {

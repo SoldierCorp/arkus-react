@@ -1,5 +1,5 @@
 // Core
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 // Components
@@ -15,12 +15,14 @@ import './style.scss'
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../store'
-import { addContact, getContacts, contactToEdit } from '../ContactList/actions'
+import { contactToEdit, getContact } from '../ContactList/actions'
 
 const ContactComponent = () => {
 
   // Variables
   const dispatch = useDispatch();
+  const history: any = useHistory()
+
 
   // State
   const [modalOpen, setModalStatus] = useState(false)
@@ -60,9 +62,17 @@ const ContactComponent = () => {
     setModalStatus(false)
   }
 
+  useEffect(() => {
+    const contactId = history.location.pathname.split('/')[2]
+    dispatch(getContact(contactId))
+  }, [])
+
+
   // Get state from redux
   const contactData: any = useSelector((state: AppState) => state.contactList.contactData)
   const isProcessing: any = useSelector((state: AppState) => state.contactList.processing)
+
+  console.log(contactData)
 
   return (
     <article className="contact">

@@ -9,7 +9,9 @@ import {
   UPDATE_CONTACT_FAIL,
   UPDATE_CONTACT_SUCCESS,
   PROCESSING,
-  CLEAR_FORM_MESSAGE
+  CLEAR_FORM_MESSAGE,
+  GET_SINGLE_CONTACT_SUCCESS,
+  GET_SINGLE_CONTACT_FAIL
 } from './types'
 import { Action, Dispatch } from 'redux'
 import { ThunkAction } from 'redux-thunk'
@@ -43,6 +45,20 @@ export const clearFormMessageAction = (type: boolean): ContactListActionTypes =>
 export const getContactsAction = (contacts: Contact[]): ContactListActionTypes => {
   return {
     type: GET_CONTACTS_SUCCESS,
+    payload: contacts
+  }
+}
+
+export const getSingleContactSuccessAction = (contacts: Contact[]): ContactListActionTypes => {
+  return {
+    type: GET_SINGLE_CONTACT_SUCCESS,
+    payload: contacts
+  }
+}
+
+export const getSingleContactFailAction = (contacts: Contact[]): ContactListActionTypes => {
+  return {
+    type: GET_SINGLE_CONTACT_FAIL,
     payload: contacts
   }
 }
@@ -112,6 +128,7 @@ export const getContacts = () => {
     })
       .then(response => {
         dispatch(getContactsAction(response.data.data))
+        return response.data
       })
       .catch(e => {
         return {
@@ -121,6 +138,27 @@ export const getContacts = () => {
       })
   }
 }
+
+// Get a contact
+export const getContact = (id: number) => {
+  return (dispatch: Dispatch<ContactListActionTypes>) => {
+    const GET_CONTACTS_URL = 'https://reqres.in/api/users/' + id;
+
+    axios({
+      method: 'GET',
+      url: GET_CONTACTS_URL
+    })
+      .then(response => {
+        dispatch(getSingleContactSuccessAction(response.data.data))
+        return response.data
+      })
+      .catch(e => {
+        dispatch(getSingleContactFailAction(e))
+        return e
+      })
+  }
+}
+
 
 // Add contact to API
 export const addContact = (data: any, avatar: any) => {
