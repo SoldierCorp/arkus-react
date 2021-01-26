@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import ContactRow from '../../components/ContactRow'
 import Modal from '../../components/Modal'
 import { useSpring } from 'react-spring'
+import { useHistory } from "react-router-dom";
 
 // Styles
 import './style.scss'
@@ -17,6 +18,7 @@ import { addContact, getContacts, contactToEdit } from './actions'
 const ContactListComponent = () => {
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [modalOpen, setModalStatus] = useState(false)
   const [modalOpenType, setModalOpenType] = useState('Add')
@@ -54,6 +56,11 @@ const ContactListComponent = () => {
     setModalStatus(false)
   }
 
+  const openDetais = (c: any) => {
+    dispatch(contactToEdit(c));
+    history.push('contact/' + c.id);
+  }
+
   // Get contacts
   useEffect(() => {
     dispatch(getContacts());
@@ -76,6 +83,7 @@ const ContactListComponent = () => {
         last_name={c.last_name}
         email={c.email}
         doOpenModal={() => openModal(c)}
+        doOpenDetails={() => openDetais(c)}
       />
     ))
   }

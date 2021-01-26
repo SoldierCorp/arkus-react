@@ -12,17 +12,18 @@ const ContactRow: React.FC<any> = (props) => {
       <span className="contact-fullname">{props.first_name} {props.last_name}</span>
       <span className="contact-email">{props.email}</span>
       <button className="btn contact-view" onClick={props.doOpenModal}>Edit</button>
-      {
+      <button className="btn contact-update" onClick={props.doOpenDetails}>View</button>
+
+     {/*  {
         !props.contactDetails &&
           <Link
           to={{
-            pathname: `/contact/${props.id}`,
-            state: props
+            pathname: `/contact/${props.id}`
           }}
           className="btn contact-update">
           View
         </Link>
-      }
+      } */}
     </div>
   );
 }
