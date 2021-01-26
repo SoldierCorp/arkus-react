@@ -2,7 +2,7 @@
   "name": "arkus-react",
   "version": "1.0.0",
   "main": "src/app.tsx",
-  "repository": "https://github.com/SoldierCorp/arkus.git",
+  "repository": "https://github.com/SoldierCorp/arkus-react.git",
   "author": "Edgardo",
   "license": "MIT",
   "scripts": {
