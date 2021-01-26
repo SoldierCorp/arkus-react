@@ -72,8 +72,6 @@ const ContactComponent = () => {
   const contactData: any = useSelector((state: AppState) => state.contactList.contactData)
   const isProcessing: any = useSelector((state: AppState) => state.contactList.processing)
 
-  console.log(contactData)
-
   return (
     <article className="contact">
       <Modal

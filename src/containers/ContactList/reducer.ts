@@ -49,8 +49,6 @@ export const contactListReducer = (
       }
     }
     case GET_SINGLE_CONTACT_SUCCESS: {
-
-      console.log(action.payload)
       return {
         ...state,
         loading: false,
