@@ -1,29 +1,31 @@
 // Core
 import React from 'react'
 
+// Components
+import { useHistory } from "react-router-dom";
+import ContactRow from '../../components/ContactRow'
+
 // Styles
-// import './style.scss'
-
-// Redux
-import { connect } from 'react-redux';
-import { AppState } from '../../store'
-import { Dispatch } from 'redux';
-import { useDispatch } from 'react-redux';
-
+import './style.scss'
 
 const ContactComponent = () => {
+  const history: any = useHistory();
+  const contactData: any = history.location.state
+
   return (
-    <div>
-      <h3>Contact</h3>
-    </div>
+    <article className="contact">
+      <div className="contact__container">
+        <h2 className="contact__title">Contact Information</h2>
+
+        <ContactRow
+          avatar={contactData.avatar}
+          firstName={contactData.first_name}
+          lastName={contactData.last_name}
+          email={contactData.email}
+        />
+      </div>
+    </article>
   );
 }
 
-const mapStateToProps = ({ home }: AppState) => ({
-  msgs: home.messages
-})
-
-const mapDispatchProps = () => {};
-
-
-export default connect(mapStateToProps, mapDispatchProps)(ContactComponent)
+export default ContactComponent

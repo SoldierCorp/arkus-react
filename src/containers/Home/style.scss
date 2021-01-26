@@ -1,3 +1,21 @@
-h3 {
-    color: green;
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.home__container {
+    color: #333;
+    strong {
+        color: grey;
+        font-weight: 400;
+    }
+}
+.main__title {
+    color: #ec4049;
+    font-size: 60px;
+}
+.main__author {
+    margin-top: 40px;
 }

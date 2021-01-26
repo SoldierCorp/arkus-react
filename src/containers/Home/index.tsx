@@ -4,27 +4,20 @@ import React from 'react'
 // Styles
 import './style.scss'
 
-// Redux
-import { connect } from 'react-redux';
-import { AppState } from '../../store'
-import { Home } from './types';
-import { Dispatch } from 'redux';
-import { useDispatch } from 'react-redux';
-
-
-const HomeComponent = () => {
+const Home = () => {
   return (
-    <div>
-      <h3>Home</h3>
-    </div>
+    <article className="home">
+      <div className="home__container">
+        <h1 className="main__title">Arkus React App</h1>
+        <p className="main__author">
+          <strong>Author:</strong> Edgardo Ramírez León
+        </p>
+        <p className="description">
+          <strong>Repo:</strong> <a href="https://github.com/SoldierCorp/arkus-react">https://github.com/SoldierCorp/arkus-react</a>
+        </p>
+      </div>
+    </article>
   );
 }
 
-const mapStateToProps = ({ home }: AppState) => ({
-  msgs: home.messages
-})
-
-const mapDispatchProps = () => {};
-
-
-export default connect(mapStateToProps, mapDispatchProps)(HomeComponent)
+export default Home

@@ -1,0 +1,25 @@
+.aside {
+    width: 200px;
+    padding: 25px 0;
+}
+.menu {
+
+}
+.menu__li {
+    & + .menu__li {
+        margin-top: 25px;
+    }
+}
+.menu__a {
+    color: #343537;
+    font-size: 18px;
+    padding: 12px;
+    transition: 0.15s ease-out background;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: 25px;
+    &--active,
+    &:hover {
+        background: #dfe2eb;
+    }
+}

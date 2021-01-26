@@ -1,0 +1,28 @@
+.contact-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 40px;
+    transition: 0.15s ease-out background;
+    padding: 15px;
+    &:hover {
+        background: #f3f6fb;
+    }
+}
+.contact-info {
+    font-size: 14px;
+}
+.contact-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.contact-fullname {
+    margin-left: 20px;
+    font-weight: bold;
+    min-width: 110px;
+}
+
+.contact-email {
+    margin-left: 20px;
+}

@@ -2,11 +2,10 @@
 import { combineReducers } from 'redux'
 
 // Reducers
-import { homeReducer } from '../containers/Home/reducer'
-
+import { contactListReducer } from '../containers/ContactList/reducer'
 
 const store = combineReducers({
-  home: homeReducer,
+  contactList: contactListReducer
 })
 
 export default store

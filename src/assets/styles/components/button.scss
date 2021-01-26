@@ -1,0 +1,23 @@
+.btn {
+    background: none;
+    border: none;
+    padding: 5px 14px;
+    font-size: 14px;
+    background: rgba(#212b35, 0.9);
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    transition: 0.15s ease-out background;
+    &:hover {
+        background: #212b35;
+    }
+}
+.btn-large {
+    padding: 10px 18px;
+    flex: 1;
+}
+.btn-default {
+    background: none;
+    border: none;
+    padding: 5px 14px;
+}
