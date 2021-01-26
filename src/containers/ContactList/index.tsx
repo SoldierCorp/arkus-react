@@ -12,12 +12,14 @@ import './style.scss'
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../store'
-import { addContact, getContacts } from './actions'
+import { addContact, getContacts, contactToEdit } from './actions'
 
-// const ContactListComponent = (props) => {
 const ContactListComponent = () => {
 
+  const dispatch = useDispatch();
+
   const [modalOpen, setModalStatus] = useState(false)
+  const [modalOpenType, setModalOpenType] = useState('Add')
 
   const modalProps = useSpring({
     opacity: modalOpen ? 1 : 0,
@@ -28,17 +30,31 @@ const ContactListComponent = () => {
     top: modalOpen ? 0 : -500,
   })
 
-  const openModal = () => {
+  const openModal = (c: any) => {
+    if (c.id !== undefined) {
+      dispatch(contactToEdit(c));
+      setModalOpenType('Update')
+    } else {
+      dispatch(contactToEdit({
+        id: 0,
+        first_name: '',
+        last_name: '',
+        email: '',
+        avatar: '',
+      }));
+      setModalOpenType('Add')
+    }
+
     setModalStatus(true)
   }
 
   const closeModal = () => {
+    if (isProcessing) return false
+
     setModalStatus(false)
   }
 
   // Get contacts
-  const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getContacts());
   }, [dispatch]);
@@ -46,7 +62,8 @@ const ContactListComponent = () => {
   // Get state from redux
   const loading = useSelector((state: AppState) => state.contactList.loading);
   const contacts = useSelector((state: AppState) => state.contactList.contacts);
-  const addSuccess = useSelector((state: AppState) => state.contactList.addSuccess);
+  const isProcessing: any = useSelector((state: AppState) => state.contactList.processing);
+
 
   // Render contacts
   const renderContacts = () => {
@@ -58,10 +75,10 @@ const ContactListComponent = () => {
         first_name={c.first_name}
         last_name={c.last_name}
         email={c.email}
+        doOpenModal={() => openModal(c)}
       />
     ))
   }
-
 
   return (
     <article className="contactlist">
@@ -70,6 +87,7 @@ const ContactListComponent = () => {
         modalProps={modalProps}
         modalContentProps={modalContentProps}
         closeModal={closeModal}
+        modalOpenType={modalOpenType}
       />
       <div className="contactlist__container">
         <header className="page-header">

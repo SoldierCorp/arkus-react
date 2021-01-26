@@ -63,12 +63,13 @@ main {
 }
 .form-input {
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     background: #dfe2eb;
-    padding: 10px 14px;
+    padding: 14px;
     font-size: 15px;
     display: block;
     width: 100%;
+    line-height: 1;
 }
 .form-label {
     font-weight: bold;
@@ -77,4 +78,11 @@ main {
 }
 .form button {
     flex: 1;
+}
+.form-message {
+    text-align: center;
+    font-size: 13px;
+    display: block;
+    font-style: italic;
+    height: 25px;
 }
