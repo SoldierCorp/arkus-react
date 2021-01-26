@@ -19,9 +19,10 @@ const ContactComponent = () => {
 
         <ContactRow
           avatar={contactData.avatar}
-          firstName={contactData.first_name}
-          lastName={contactData.last_name}
+          first_name={contactData.first_name}
+          last_name={contactData.last_name}
           email={contactData.email}
+          contactDetails
         />
       </div>
     </article>

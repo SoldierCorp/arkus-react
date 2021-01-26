@@ -16,7 +16,7 @@ const Routes: React.FC = () => (
     <main>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route path='/contact-list' component={ContactList} />
+        <Route exact path='/contact-list' component={ContactList} />
         <Route path='/contact/:id' component={Contact} />
         <Route component={NotFound} />
       </Switch>

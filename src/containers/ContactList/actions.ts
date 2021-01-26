@@ -27,10 +27,10 @@ export const getContactsAction = (contacts: Contact[]): ContactListActionTypes =
   };
 };
 
-export const addContactAction = (contacts: Contact[]): ContactListActionTypes => {
+export const addContactAction = (contact: Contact[]): ContactListActionTypes => {
   return {
     type: ADD_CONTACT_SUCCESS,
-    payload: contacts
+    payload: contact
   };
 };
 
@@ -44,10 +44,7 @@ export const getContacts = () => {
       url: GET_CONTACTS_URL
     })
       .then(response => {
-        dispatch({
-          type: GET_CONTACTS_SUCCESS,
-          payload: response.data.data
-        })
+        dispatch(getContactsAction(response.data.data))
       })
       .catch(e => {
         return {
@@ -72,13 +69,19 @@ export const addContact = (data: any, avatar: any) => {
     console.log(formData)
     console.log(data)
 
-    axios.post(POST_CONTACTS_URL, data)
+    axios({
+      method: 'POST',
+      url: POST_CONTACTS_URL,
+      data: formData,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'multipart/form-data',
+      },
+    })
       .then(response => {
         console.log(response.data)
-        dispatch({
-          type: ADD_CONTACT_SUCCESS,
-          payload: response.data.data
-        })
+        dispatch(addContactAction(response.data.data))
+        return response.data.data;
       })
       .catch(e => {
         console.log(e.response)

@@ -7,13 +7,6 @@ import {
 // Styles
 import './style.scss'
 
-// Redux
-/* import { connect } from 'react-redux';
-import { AppState } from '../../store'
-import { Dispatch } from 'redux';
-import { useDispatch } from 'react-redux'; */
-
-
 const Navbar = () => {
   return (
     <aside className="aside">

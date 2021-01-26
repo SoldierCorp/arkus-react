@@ -1,6 +1,7 @@
 .contact-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     border-radius: 40px;
     transition: 0.15s ease-out background;
@@ -20,9 +21,19 @@
 .contact-fullname {
     margin-left: 20px;
     font-weight: bold;
-    min-width: 110px;
+    // min-width: 110px;
+    flex: 1;
 }
 
 .contact-email {
+    flex: 1;
+    margin-left: 20px;
+}
+.contact-update {
+    margin-left: 20px;
+    width: 100px;
+}
+.contact-view {
+    width: 100px;
     margin-left: 20px;
 }

@@ -1,7 +1,15 @@
-import { ContactListActionTypes, ContactStateType, GET_CONTACTS_SUCCESS  } from './types'
+import {
+  ContactListActionTypes,
+  ContactStateType,
+  GET_CONTACTS_SUCCESS,
+  GET_CONTACTS_FAIL,
+  ADD_CONTACT_SUCCESS,
+  ADD_CONTACT_FAIL
+} from './types'
 
 const initialState: ContactStateType = {
   loading: true,
+  addSuccess: false,
   contacts: []
 }
 
@@ -15,6 +23,13 @@ export const contactListReducer = (
         ...state,
         loading: false,
         contacts: action.payload
+      }
+    }
+    case ADD_CONTACT_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        addSuccess: true,
       }
     }
     default:
