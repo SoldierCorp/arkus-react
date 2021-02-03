@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <article className="home">
       <div className="home__container">
-        <h1 className="main__title">Arkus React App</h1>
+        <h1 className="main__title">React Redux Typescript Webpack</h1>
         <p className="main__author">
           <strong>Author:</strong> Edgardo Ramírez León
         </p>
