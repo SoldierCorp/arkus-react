@@ -1,4 +1,4 @@
-##  Arkus React App
+##  Simple project to manage contacts from reqres.in
 
 ### Tech stack
 - React
